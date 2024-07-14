@@ -1,0 +1,25 @@
+ {/* <header className="SideBar">
+        <h1>Natalidade Brasileira</h1>
+        <a href="####">Home</a>
+        <button>Atualizar dados</button>
+        <div className="container">
+          <p>São Paulo</p>
+          <p>Data do ultima atulalização</p>
+          <p>00/00/0000</p>
+        </div>
+      </header>
+      <body className="Body">
+        <header>
+          <div id="taxa">taxa de natalidade</div>
+          <div id="total"> total de nascidos</div>
+          <div id="tendencia"> tendencia de nasciemnto </div>
+        </header>
+        <body>
+          <div className="grafico">
+            grafico de natalidade no perido de 2000 a 2020
+          </div>
+          <div> taxa de nascimento de meninos</div>
+          <div> taxa de nascimento de meninas</div>
+          <div> cidades com maior taxa de natalidades</div>
+        </body>
+      </body> */}
