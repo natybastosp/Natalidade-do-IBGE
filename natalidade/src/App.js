@@ -1,19 +1,32 @@
 import React from "react";
 import "./index.css";
+import Sidebar from "./components/sidebar";
+import Card from "./components/card";
+import Graphic from "./components/graficos";
 
 function App() {
   return (
-    <div>
-      <header className="bg-blue-500 text-white p-4 h-screen w-56 fixed left-0 top-0">
-        <h1 className="text-2xl">Nataliada Br</h1>
+    <div className="m-3">
+      <header>
+        <Sidebar />
       </header>
-      <main className="p-4 ml-56">
-        <div className="grid grid-cols-3 gap-8 h-16 ">
-          <div className="bg-black p-4 rounded-lg">
-            <p> Taxa de nataliada</p>
+      <main className="ml-60 ">
+        <div className=" grid grid-cols-3 gap-6">
+          <Card />
+          <Card />
+          <Card />
+        </div>
+        <div className="py-5 grid grid-cols-2 gap-3">
+          <Graphic />
+          <div className="flex flex-col gap-3">
+            <Card />
+            <Card />
           </div>
-          <div className="bg-black p-4 rounded-lg ">box de dados</div>
-          <div className="bg-black p-4 rounded-lg ">box de dados</div>
+          <div className="flex flex-col gap-3">
+            <Card />
+            <Card />
+          </div>
+          <Graphic />
         </div>
       </main>
     </div>
