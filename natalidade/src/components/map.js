@@ -33,14 +33,12 @@ const states = [
   { name: "Tocantins", coords: [-9.4637, -48.3966] },
 ];
 
-const customIcon = new L.Icon({
-  iconUrl: "pontoIcon",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowUrl: "pontoIcon", // URL da sombra do ícone
-  shadowSize: [41, 41], // Tamanho da sombra
-  shadowAnchor: [12, 41], // Ponto de ancoragem da sombra
+// Custom icon using L.divIcon
+const greenCircle = L.divIcon({
+  className: "custom-icon",
+  html: `<div style="width: 20px; height: 20px; background-color: green; border-radius: 50%;"></div>`,
+  iconSize: [20, 20],
+  iconAnchor: [10, 10], // Center the icon
 });
 
 const Map = () => {
@@ -63,7 +61,7 @@ const Map = () => {
   };
 
   return (
-    <div className="ml-56  mb-2">
+    <div className="ml-56 mb-2">
       <div>
         <Sidebar>
           <div>
@@ -101,7 +99,7 @@ const Map = () => {
             attribution="© OpenStreetMap contributors "
           />
           {states.map((state, index) => (
-            <Marker key={index} position={state.coords} icon={customIcon}>
+            <Marker key={index} position={state.coords} icon={greenCircle}>
               <Popup>
                 <div className="grid grid-rows-2 gap-2">
                   <div>{state.name}</div>

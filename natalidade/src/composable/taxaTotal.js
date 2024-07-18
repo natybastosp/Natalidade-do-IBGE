@@ -5,13 +5,14 @@ export const fetchDataFromAPITotal = async (
   setTaxaState
 ) => {
   try {
-    // api de total de crianças de 0 a 4 anos
+    // API de total de crianças de 0 a 4 anos
     const response = await fetch(
       `https://servicodados.ibge.gov.br/api/v3/agregados/1209/periodos/2022/variaveis/1000606?localidades=N1[all]|N3[${id}]&classificacao=58[1140]`
     );
     const result = await response.json();
-    console.log("Resultado da API:", result);
     setData(result);
+
+    console.log("Resultado:", result);
 
     // Verificar se há resultados e séries disponíveis
     if (result.length > 0 && result[0]?.resultados.length > 0) {
@@ -23,7 +24,7 @@ export const fetchDataFromAPITotal = async (
       // Encontrar a série para o estado específico usando o ID dinâmico
       const taxaState = result[0].resultados[0].series.find(
         (serie) => serie.localidade.id === id
-      )?.serie;
+      )?.serie["2022"];
 
       console.log("Taxa Brasil:", taxaBrasil);
       console.log("Taxa State:", taxaState);
