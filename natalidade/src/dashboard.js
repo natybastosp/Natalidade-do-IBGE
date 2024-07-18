@@ -32,7 +32,10 @@ function Dashboard() {
   return (
     <div className="m-3 bg-[#f5f5f5]">
       <header>
-        <Sidebar />
+        <Sidebar>
+          {" "}
+          <p className="text-stone-200">estado</p>{" "}
+        </Sidebar>
       </header>
       <main className="ml-60 ">
         <div className=" grid grid-cols-3 gap-6">
