@@ -85,10 +85,13 @@ const Home = () => {
             <Marker key={index} position={state.coords} icon={customIcon}>
               <Popup>
                 <div className="grid grid-rows-2 gap-2">
-                  <div>{state.name}</div>
+                  <div className="font-semibold text-gray-800 p-4 bg-gray-100  rounded shadow-md">
+                    {state.name}
+                  </div>
                   <button
                     name="button"
                     onClick={() => handleButtonClick(state)}
+                    className="px-4 py-2 rounded bg-blue-500 text-white hover:bg-blue-700 transition duration-300"
                   >
                     {state.label} Dashboard
                   </button>

@@ -15,17 +15,13 @@ function Dashboard() {
   const location = useLocation();
   const { id, label, name } = location.state || {};
 
-  useEffect(
-    () => {
-      fetchDataFromAPITotal(id, setData, setTaxaBrasil, setTaxaState);
-      fetchDataFromAPIBoyGirl(id, setData, setTaxaBoy, setTaxaGirl); // Utilizar a função de serviço
-    },
-    [id]
-    // Utilizar a função de serviço
-  );
+  useEffect(() => {
+    fetchDataFromAPITotal(id, setData, setTaxaBrasil, setTaxaState);
+    fetchDataFromAPIBoyGirl(id, setData, setTaxaBoy, setTaxaGirl);
+  }, [id]);
 
   const datas = [2, 230, 224, 300, 135, 147, 260];
-  const option = {
+  const line = {
     xAxis: {
       type: "category",
       data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
@@ -41,11 +37,38 @@ function Dashboard() {
     ],
   };
 
+  const col = {
+    xAxis: {
+      type: "category",
+      data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    },
+    yAxis: {
+      type: "value",
+    },
+    series: [
+      {
+        data: [120, 200, 150, 80, 70, 110, 130],
+        type: "bar",
+      },
+    ],
+  };
+
   return (
-    <div className="m-3 bg-[#f5f5f5]">
-      <header></header>
-      <main className="ml-60">
-        <div className="grid grid-cols-3 gap-6">
+    <div className="min-h-screen bg-gray-100">
+      <aside className="fixed inset-y-0 left-0 bg-blue-900 text-white w-60 p-5">
+        <h1 className="text-3xl font-bold mb-10">Natalida Br</h1>
+        <nav>
+          <ul>
+            <li className="mb-4">
+              <a href="/" className="text-lg">
+                Home
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+      <main className="ml-60 p-8">
+        <div className="grid grid-cols-3 gap-6 mb-6">
           <CardHeader
             text={
               taxaBrasil
@@ -62,11 +85,11 @@ function Dashboard() {
           />
           <CardHeader text="Total de nascimento" />
         </div>
-        <div className="py-5 grid grid-cols-2 gap-3">
-          <div className="bg-zinc-400 p-4 rounded-lg h-96">
-            <ReactECharts option={option} />
+        <div className="grid grid-cols-2 gap-6">
+          <div className="bg-white p-6 rounded-lg shadow-md">
+            <ReactECharts option={line} />
           </div>
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-6">
             <CardMain
               text={
                 taxaState
@@ -77,14 +100,17 @@ function Dashboard() {
             <CardMain
               text={
                 taxaState
-                  ? `Meninas no estado de ${name} de 0 a 4 anos: ${taxaBoy}%`
+                  ? `Meninos no estado de ${name} de 0 a 4 anos: ${taxaBoy}%`
                   : `Taxa não disponível para o estado de ${name}`
               }
             />
           </div>
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-6">
             <CardMain text="Cidade com maior nascimento" data="20" />
             <CardMain text="Cidade com menos nascimento" data="20" />
+          </div>
+          <div className="bg-white p-6 rounded-lg shadow-md">
+            <ReactECharts option={col} />
           </div>
         </div>
       </main>
