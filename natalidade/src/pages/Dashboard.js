@@ -4,7 +4,8 @@ import CardHeader from "../components/cardHeader";
 import CardMain from "../components/cardMain";
 import ReactECharts from "echarts-for-react";
 import { fetchDataFromAPITotal } from "../composable/taxaTotal";
-import { fetchDataFromAPIBoyGirl } from "../composable/taxaBoyGirl";
+import { fetchDataFromAPIBoy } from "../composable/taxaBoy";
+import { fetchDataFromAPIGirl } from "../composable/taxaGirl";
 import { fetchDataFromAPIFuture } from "../composable/taxaProjecao";
 
 function Dashboard() {
@@ -19,38 +20,52 @@ function Dashboard() {
 
   useEffect(() => {
     fetchDataFromAPITotal(id, setData, setTaxaBrasil, setTaxaState);
-    fetchDataFromAPIBoyGirl(id, setData, setTaxaBoy, setTaxaGirl);
+    fetchDataFromAPIBoy(id, setData, setTaxaBoy);
+    fetchDataFromAPIGirl(id, setData, setTaxaGirl);
     fetchDataFromAPIFuture(id, setData, setDataByYear);
   }, [id]);
 
-  console.log("Dados:", dataByYear);
+  console.log("Dados:", taxaBoy);
+  console.log("Dados:", taxaGirl);
 
   const col = {
-    title: {
-      text: "Comparação de crianças de 0 a 4 anos",
-      left: "center",
-      top: "top",
-      textStyle: {
-        fontSize: 18,
-        fontWeight: "bold",
+    tooltip: {
+      trigger: "axis",
+      axisPointer: {
+        type: "shadow",
       },
     },
-    xAxis: {
-      type: "category",
-      data: [
-        "Taxa Brasileira",
-        "Taxa Estadual",
-        "Taxa Meninos",
-        "Taxa Meninas",
-      ],
+    grid: {
+      left: "3%",
+      right: "4%",
+      bottom: "3%",
+      containLabel: true,
     },
-    yAxis: {
-      type: "value",
-    },
+    xAxis: [
+      {
+        type: "category",
+        data: [
+          "Taxa Brasileira",
+          "Taxa Estadual",
+          "Taxa Meninos",
+          "Taxa Meninas",
+        ],
+        axisTick: {
+          alignWithLabel: true,
+        },
+      },
+    ],
+    yAxis: [
+      {
+        type: "value",
+      },
+    ],
     series: [
       {
-        data: [taxaBrasil, taxaState, taxaBoy, taxaGirl],
+        name: "Percentual",
         type: "bar",
+        barWidth: "60%",
+        data: [taxaBrasil, taxaState, taxaBoy, taxaGirl],
       },
     ],
   };
@@ -113,17 +128,17 @@ function Dashboard() {
             <ReactECharts option={col} />
           </div>
 
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6  ">
             <CardMain
               text={
-                taxaState
+                taxaGirl
                   ? `Meninas no estado de ${name} de 0 a 4 anos: ${taxaGirl}%`
                   : `Taxa de meninas não disponível para o estado de ${name}`
               }
             />
             <CardMain
               text={
-                taxaState
+                taxaBoy
                   ? `Meninos no estado de ${name} de 0 a 4 anos: ${taxaBoy}%`
                   : `Taxa de meninos não disponível para o estado de ${name}`
               }
