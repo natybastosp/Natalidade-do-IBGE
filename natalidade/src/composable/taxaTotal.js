@@ -10,7 +10,6 @@ export const fetchDataFromAPITotal = async (
       `https://servicodados.ibge.gov.br/api/v3/agregados/1209/periodos/2022/variaveis/1000606?localidades=N1[all]|N3[${id}]&classificacao=58[1140]`
     );
     const result = await response.json();
-    console.log("Resultado:", result);
 
     if (result.length > 0) {
       const data = result[0]; // Acessa o primeiro item do array de resultados

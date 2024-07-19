@@ -25,7 +25,6 @@ function Dashboard() {
     fetchDataFromAPIFuture(id, setData, setDataByYear);
   }, [id]);
 
-  console.log("Data:", taxaState);
   const col = {
     tooltip: {
       trigger: "axis",
