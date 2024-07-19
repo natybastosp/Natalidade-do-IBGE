@@ -73,11 +73,12 @@ const Home = () => {
   };
 
   return (
-    <div className="ml-56 mb-2">
+    <div className="ml-56 mb-2" role="main">
       <MapContainer
         center={mapCenter}
         zoom={mapZoom}
         style={{ height: "100vh", width: "100%" }}
+        aria-label="Mapa interativo mostrando estados do Brasil"
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -86,13 +87,17 @@ const Home = () => {
         {states.map((state) => (
           <Marker key={state.id} position={state.coords} icon={customIcon}>
             <Popup>
-              <div className="grid grid-rows-2 gap-2">
+              <div
+                className="grid grid-rows-2 gap-2"
+                aria-label={`Informações do estado ${state.name}`}
+              >
                 <div className="font-semibold text-gray-800 p-4 bg-gray-100 rounded shadow-md">
                   {state.name}
                 </div>
                 <button
                   onClick={() => handleButtonClick(state)}
                   className="px-4 py-2 rounded bg-blue-500 text-white hover:bg-blue-700 transition duration-300"
+                  aria-label={`Ver dashboard do estado ${state.name}`}
                 >
                   {state.label} Dashboard
                 </button>

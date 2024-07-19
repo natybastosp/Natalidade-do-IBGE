@@ -102,7 +102,7 @@ function Dashboard() {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      <main className="ml-60 p-8">
+      <main className="ml-60 p-8" role="main">
         <div className="grid lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1  gap-6 mb-6">
           <CardHeader
             text={
@@ -127,8 +127,18 @@ function Dashboard() {
           />
         </div>
         <div className="lg:grid lg:grid-cols-2 md:grid md:grid-cols-1 sm:grid sm:grid-cols-1 gap-6">
-          <div className="bg-white p-6 rounded-lg shadow-md col-span-2">
-            <ReactECharts option={col} />
+          <div
+            className="bg-white p-6 rounded-lg shadow-md col-span-2"
+            role="region"
+            aria-labelledby="col-chart-title"
+          >
+            <h2 id="col-chart-title" className="sr-only">
+              Gráfico de Colunas
+            </h2>
+            <ReactECharts
+              option={col}
+              aria-label="Gráfico de colunas mostrando taxas de crianças no Brasil"
+            />
           </div>
 
           <div className="grid grid-cols-1 gap-6">
@@ -147,8 +157,18 @@ function Dashboard() {
               }
             />
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-md ">
-            <ReactECharts option={line} />
+          <div
+            className="bg-white p-6 rounded-lg shadow-md "
+            role="region"
+            aria-labelledby="line-chart-title"
+          >
+            <h2 id="line-chart-title" className="sr-only">
+              Projeção de Nascimentos
+            </h2>
+            <ReactECharts
+              option={line}
+              aria-label="Gráfico de linha mostrando projeção de nascimentos"
+            />
           </div>
         </div>
       </main>
