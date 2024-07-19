@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { useNavigate } from "react-router-dom";
-
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 
@@ -49,20 +48,24 @@ const states = [
   { id: 17, label: "TO", name: "Tocantins", coords: [-9.4637, -48.3966] },
 ];
 
-const customIcon = new L.Icon({
-  iconUrl: "pontoIcon",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowUrl: "pontoIcon", // URL da sombra do ícone
-  shadowSize: [41, 41], // Tamanho da sombra
-  shadowAnchor: [12, 41], // Ponto de ancoragem da sombra
-});
-
 const Home = () => {
   const navigate = useNavigate();
   const [mapCenter, setMapCenter] = useState([-14.235, -51.9253]);
   const [mapZoom, setMapZoom] = useState(4.5);
+
+  const customIcon = useMemo(
+    () =>
+      new L.Icon({
+        iconUrl: "pontoIcon",
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowUrl: "pontoIcon",
+        shadowSize: [41, 41],
+        shadowAnchor: [12, 41],
+      }),
+    []
+  );
 
   const handleButtonClick = (state) => {
     console.log("handleButtonClick", state);
