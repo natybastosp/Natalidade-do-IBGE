@@ -24,7 +24,6 @@ export const fetchDataFromAPIFuture = async (id, setData, setDataByYear) => {
       });
 
       setDataByYear(dataByYear);
-      console.log("Dados por ano:", dataByYear);
     } else {
       console.warn("Nenhum resultado encontrado na resposta da API.");
     }

@@ -10,28 +10,29 @@ export const fetchDataFromAPITotal = async (
       `https://servicodados.ibge.gov.br/api/v3/agregados/1209/periodos/2022/variaveis/1000606?localidades=N1[all]|N3[${id}]&classificacao=58[1140]`
     );
     const result = await response.json();
-    setData(result);
-
     console.log("Resultado:", result);
 
-    // Verificar se há resultados e séries disponíveis
-    if (result.length > 0 && result[0]?.resultados.length > 0) {
-      // Encontrar a série para o Brasil usando o ID "1"
-      const taxaBrasil = result[0].resultados[0].series.find(
+    if (result.length > 0) {
+      const data = result[0]; // Acessa o primeiro item do array de resultados
+      setData(data);
+
+      // Extrai a taxa do Brasil para o ano de 2022
+      const brasilSerie = data.resultados[0]?.series.find(
         (serie) => serie.localidade.id === "1"
-      )?.serie["2022"];
+      );
+      const taxaBrasil = brasilSerie?.serie[2022];
+      if (taxaBrasil) {
+        setTaxaBrasil(taxaBrasil);
+      }
 
-      // Encontrar a série para o estado específico usando o ID dinâmico
-      const taxaState = result[0].resultados[0].series.find(
-        (serie) => serie.localidade.id === id
-      )?.serie["2022"];
-
-      console.log("Taxa Brasil:", taxaBrasil);
-      console.log("Taxa State:", taxaState);
-
-      // Definir a taxa nos estados
-      setTaxaBrasil(taxaBrasil);
-      setTaxaState(taxaState);
+      // Extrai a taxa do estado específico para o ano de 2022
+      const estadoSerie = data.resultados[0]?.series.find((serie) => serie);
+      const taxaState = estadoSerie?.serie[2022];
+      if (taxaState) {
+        setTaxaState(taxaState);
+      } else {
+        console.warn(`Taxa para o estado com id ${id} não encontrada.`);
+      }
     }
   } catch (error) {
     console.error("Erro ao buscar dados:", error);

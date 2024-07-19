@@ -25,9 +25,7 @@ function Dashboard() {
     fetchDataFromAPIFuture(id, setData, setDataByYear);
   }, [id]);
 
-  console.log("Dados:", taxaBoy);
-  console.log("Dados:", taxaGirl);
-
+  console.log("Data:", taxaState);
   const col = {
     tooltip: {
       trigger: "axis",
@@ -121,7 +119,13 @@ function Dashboard() {
                 : `Taxa não disponível para o estado de ${name}`
             }
           />
-          <CardHeader text="Total de nascimento" />
+          <CardHeader
+            text={
+              dataByYear?.[2030]?.[2018]
+                ? `Projeção para  ano de 2030 em ${name} de 0 a 4 anos: ${dataByYear?.[2030]?.[2018]}%`
+                : `Projeção para  ano de 2030 não disponível para o estado de ${name}`
+            }
+          />
         </div>
         <div className="grid grid-cols-2 gap-6">
           <div className="bg-white p-6 rounded-lg shadow-md col-span-2">
