@@ -14,7 +14,7 @@ const Sidebar = () => {
   const isDashboard = location.pathname === "/dashboard";
 
   return (
-    <div className="bg-indigo-900 text-stone-200 h-screen w-56 fixed left-0 top-0 shadow-lg">
+    <div className="bg-indigo-900 text-stone-200 h-screen w-56  fixed left-0 top-0 shadow-lg">
       <header className="flex items-center space-x-2">
         <h1 className="text-3xl font-bold p-5">Nataliada Br</h1>
       </header>

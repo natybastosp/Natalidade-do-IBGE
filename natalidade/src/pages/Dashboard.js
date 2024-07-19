@@ -103,7 +103,7 @@ function Dashboard() {
   return (
     <div className="min-h-screen bg-gray-100">
       <main className="ml-60 p-8">
-        <div className="grid grid-cols-3 gap-6 mb-6">
+        <div className="grid lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1  gap-6 mb-6">
           <CardHeader
             text={
               taxaBrasil
@@ -126,12 +126,12 @@ function Dashboard() {
             }
           />
         </div>
-        <div className="grid grid-cols-2 gap-6">
+        <div className="lg:grid lg:grid-cols-2 md:grid md:grid-cols-1 sm:grid sm:grid-cols-1 gap-6">
           <div className="bg-white p-6 rounded-lg shadow-md col-span-2">
             <ReactECharts option={col} />
           </div>
 
-          <div className="flex flex-col gap-6  ">
+          <div className="grid grid-cols-1 gap-6">
             <CardMain
               text={
                 taxaGirl
