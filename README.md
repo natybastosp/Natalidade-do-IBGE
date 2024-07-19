@@ -20,3 +20,11 @@ Dashboard dos dados das crianças de 0-4 anos nos estados brasileiros, com os da
    ```bash
    npm run dev
    ```
+
+## Tecnologias
+
+- [React](https://reactjs.org/)
+- [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
+- [Echarts](https://echarts.apache.org/en/index.html)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Leaflet](https://leafletjs.com/)
