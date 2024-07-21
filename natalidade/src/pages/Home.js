@@ -61,9 +61,6 @@ const Home = () => {
     if (selectedState) {
       setEstadoSelecionadoDetails(selectedState);
       // Adiciona um console.log para mostrar o id do estado selecionado
-      console.log(`ID do estado selecionado: ${selectedState.id}`);
-      console.log(`Nome do estado selecionado: ${selectedState.name}`);
-      console.log(`Label do estado selecionado: ${selectedState.label}`);
     }
   };
 
