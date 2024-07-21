@@ -8,7 +8,7 @@ import ColumnChart from "../components/colunmGrafic";
 import LineChart from "../components/lineGrafic";
 
 const Home = () => {
-  const [estadoSelecionado, setEstadoSelecionado] = useState(null);
+  const [estadoSelecionado, setEstadoSelecionado] = useState("");
   const [estadoSelecionadoDetails, setEstadoSelecionadoDetails] = useState({});
   const [data, setData] = useState(null);
   const [taxaBrasil, setTaxaBrasil] = useState(null);
@@ -60,7 +60,6 @@ const Home = () => {
     const selectedState = states.find((state) => state.label === selectedLabel);
     if (selectedState) {
       setEstadoSelecionadoDetails(selectedState);
-      // Adiciona um console.log para mostrar o id do estado selecionado
     }
   };
 
@@ -88,13 +87,16 @@ const Home = () => {
         <div className="p-4">
           <div className="bg-slate-100">
             <div className="w-full h-full">
-              <BrazilMap onStateClick={handleStateClick} />
+              <BrazilMap
+                onStateClick={handleStateClick}
+                selectedState={estadoSelecionadoDetails.name}
+              />
             </div>
           </div>
           <p>A fonte de dados desta página é o IBGE</p>
         </div>
 
-        <div className=" p-4">
+        <div className="p-4">
           <div>
             <div>
               <span className="flex flex-row gap-3">
