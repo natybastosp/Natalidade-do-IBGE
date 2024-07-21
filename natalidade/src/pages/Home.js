@@ -85,8 +85,8 @@ const Home = () => {
   return (
     <div className="pt-24 h-screen">
       <div className="grid lg:grid-cols-2 md:grid-cols-1 gap-16 sm:grid-cols-1 h-2/3 px-16">
-        <div className="bg-slate-100">
-          <div className="p-4">
+        <div className="p-4">
+          <div className="bg-slate-100">
             <div className="w-full h-full">
               <BrazilMap onStateClick={handleStateClick} />
             </div>
