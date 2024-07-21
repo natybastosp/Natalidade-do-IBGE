@@ -8,11 +8,8 @@ const Header = () => {
       <nav className="flex justify-around">
         <ul className="flex space-x-6">
           <li>
-            <a
-              href="#home"
-              className="text-gray-700 font-bold text-lg hover:text-blue-900"
-            >
-              Home
+            <a className="text-gray-700 font-bold text-lg hover:text-blue-900">
+              Natalidade no Brasil
             </a>
           </li>
         </ul>

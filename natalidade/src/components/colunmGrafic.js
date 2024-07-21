@@ -10,12 +10,19 @@ const ColumnChart = ({ taxaBrasil, taxaState, taxaBoy, taxaGirl }) => {
       textStyle: {
         fontSize: 18,
         fontWeight: "bold",
+        color: "#1E3A8A",
       },
     },
     tooltip: {
       trigger: "axis",
       axisPointer: {
         type: "shadow",
+      },
+      backgroundColor: "#FFFFFF",
+      borderColor: "#1E3A8A",
+      borderWidth: 1,
+      textStyle: {
+        color: "#1E3A8A",
       },
     },
     grid: {
@@ -36,11 +43,32 @@ const ColumnChart = ({ taxaBrasil, taxaState, taxaBoy, taxaGirl }) => {
         axisTick: {
           alignWithLabel: true,
         },
+        axisLabel: {
+          color: "#4B5563",
+        },
+        axisLine: {
+          lineStyle: {
+            color: "#E5E7EB",
+          },
+        },
       },
     ],
     yAxis: [
       {
         type: "value",
+        axisLabel: {
+          color: "#4B5563",
+        },
+        axisLine: {
+          lineStyle: {
+            color: "#E5E7EB",
+          },
+        },
+        splitLine: {
+          lineStyle: {
+            color: "#E5E7EB",
+          },
+        },
       },
     ],
     series: [
@@ -49,13 +77,16 @@ const ColumnChart = ({ taxaBrasil, taxaState, taxaBoy, taxaGirl }) => {
         type: "bar",
         barWidth: "60%",
         data: [taxaBrasil, taxaState, taxaBoy, taxaGirl],
+        itemStyle: {
+          color: "#3B82F6",
+        },
       },
     ],
   };
 
   return (
     <div
-      className="bg-white p-6 rounded-lg shadow-md"
+      className="bg-gray-50 p-6 rounded-lg shadow-lg"
       role="region"
       aria-labelledby="col-chart-title"
     >

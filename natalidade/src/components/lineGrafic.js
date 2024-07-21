@@ -4,20 +4,42 @@ import ReactECharts from "echarts-for-react";
 const LineChart = ({ dataByYear }) => {
   const lineOption = {
     title: {
-      text: "Projeção de nascimentos",
+      text: "Projeção de Nascimentos",
       left: "center",
       top: "top",
       textStyle: {
         fontSize: 18,
         fontWeight: "bold",
+        color: "#1E3A8A",
       },
     },
     xAxis: {
       type: "category",
       data: ["2025", "2026", "2027", "2028", "2029", "2030"],
+      axisLabel: {
+        color: "#4B5563",
+      },
+      axisLine: {
+        lineStyle: {
+          color: "#E5E7EB",
+        },
+      },
     },
     yAxis: {
       type: "value",
+      axisLabel: {
+        color: "#4B5563",
+      },
+      axisLine: {
+        lineStyle: {
+          color: "#E5E7EB",
+        },
+      },
+      splitLine: {
+        lineStyle: {
+          color: "#E5E7EB",
+        },
+      },
     },
     series: [
       {
@@ -31,13 +53,20 @@ const LineChart = ({ dataByYear }) => {
         ],
         type: "line",
         smooth: true,
+        lineStyle: {
+          color: "#3B82F6",
+          width: 2,
+        },
+        itemStyle: {
+          color: "#3B82F6",
+        },
       },
     ],
   };
 
   return (
     <div
-      className="bg-white p-6 rounded-lg shadow-md"
+      className="bg-gray-50 p-6 rounded-lg shadow-lg"
       role="region"
       aria-labelledby="line-chart-title"
     >

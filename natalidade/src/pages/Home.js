@@ -88,37 +88,72 @@ const Home = () => {
         <div className="bg-slate-100">
           <div className="p-4">
             <div className="w-full h-full">
-              <h1>Mapa Interativo do Brasil</h1>
               <BrazilMap onStateClick={handleStateClick} />
             </div>
           </div>
           <p>A fonte de dados desta página é o IBGE</p>
-          {estadoSelecionado && (
-            <div>
-              <p>Estado selecionado: {estadoSelecionado}</p>
-            </div>
-          )}
         </div>
-        <div className="bg-slate-100 p-4">
-          <span className="flex flex-row gap-3">
-            <select
-              className="p-2 rounded-md"
-              onChange={handleSelectChange}
-              value={estadoSelecionado || ""}
-            >
-              <option value="">UF</option>
-              {states.map((state) => (
-                <option key={state.id} value={state.label}>
-                  {state.name}
-                </option>
-              ))}
-            </select>
 
-            <select className="p-2 rounded-md" />
-            <select className="p-2 rounded-md" />
-          </span>
-          <span className="flex flex-col pt-8 gap-3">
-            <p>dados</p>
+        <div className=" p-4">
+          <div>
+            <div>
+              <span className="flex flex-row gap-3">
+                <select
+                  className="p-2 rounded-full bg-[#1b4677] text-white"
+                  onChange={handleSelectChange}
+                  value={estadoSelecionado || ""}
+                >
+                  <option value="">UF</option>
+                  {states.map((state) => (
+                    <option key={state.id} value={state.label}>
+                      {state.name}
+                    </option>
+                  ))}
+                </select>
+
+                <select
+                  className="p-2 rounded-full bg-[#1b4677] text-white"
+                  onChange={handleSelectChange}
+                  value={estadoSelecionado || ""}
+                >
+                  <option value="">UF</option>
+                  {states.map((state) => (
+                    <option key={state.id} value={state.label}>
+                      {state.name}
+                    </option>
+                  ))}
+                </select>
+              </span>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 pt-8 gap-3">
+            <div className="p-6 bg-gray-100 rounded-lg shadow-lg">
+              <h1 className="text-3xl font-extrabold text-blue-600 mb-4">
+                {estadoSelecionadoDetails.name}
+              </h1>
+              <p className="text-lg text-gray-700 mb-2">
+                <span className="font-semibold">Taxa de natalidade:</span>{" "}
+                {taxaState}% nascimentos
+              </p>
+              <p className="text-lg text-gray-700 mb-2">
+                <span className="font-semibold">
+                  Taxa de natalidade no Brasil:
+                </span>{" "}
+                {taxaBrasil}% nascimentos
+              </p>
+              <p className="text-lg text-gray-700 mb-2">
+                <span className="font-semibold">
+                  Taxa de natalidade de meninos:
+                </span>{" "}
+                {taxaBoy}% nascimentos
+              </p>
+              <p className="text-lg text-gray-700">
+                <span className="font-semibold">
+                  Taxa de natalidade de meninas:
+                </span>{" "}
+                {taxaGirl}% nascimentos
+              </p>
+            </div>
 
             <div>
               <ColumnChart
@@ -131,7 +166,7 @@ const Home = () => {
             <div>
               <LineChart dataByYear={dataByYear} />
             </div>
-          </span>
+          </div>
         </div>
       </div>
     </div>
