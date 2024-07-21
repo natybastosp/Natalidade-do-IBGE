@@ -1,49 +1,22 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  NavLink,
-  useLocation,
-} from "react-router-dom";
-import Home from "./pages/Home"; // Make sure to create and import Home component
-import Dashboard from "./pages/Dashboard"; // Make sure to create and import Dashboard component
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
 
-const Sidebar = () => {
-  const location = useLocation();
-  const isDashboard = location.pathname === "/dashboard";
-
+const Header = () => {
   return (
-    <div className="bg-indigo-900 text-stone-200 h-screen w-56  fixed left-0 top-0 shadow-lg">
-      <header className="flex items-center space-x-2">
-        <h1 className="text-3xl font-bold p-5">Nataliada Br</h1>
-      </header>
-      <div className="grid grid-cols-1 gap-2 pt-6 mr-3">
-        <NavLink
-          to="/"
-          className={({ isActive }) =>
-            isActive
-              ? "hover:bg-indigo-600 bg-indigo-500 text-white py-5 pl-5 ml-0 rounded-r-full transition duration-300"
-              : "hover:bg-indigo-600 text-white py-5 pl-5 ml-0 rounded-r-full transition duration-300"
-          }
-        >
-          Home
-        </NavLink>
-      </div>
-      {isDashboard && (
-        <div className="grid grid-cols-1 gap-2 pt-6 mr-3">
-          <NavLink
-            to="/dashboard"
-            className={({ isActive }) =>
-              isActive
-                ? "hover:bg-indigo-600 bg-indigo-500 text-white py-5 pl-5 ml-0 rounded-r-full transition duration-300"
-                : "hover:bg-indigo-600 text-white py-5 pl-5 ml-0 rounded-r-full transition duration-300"
-            }
-          >
-            Dashboard
-          </NavLink>
-        </div>
-      )}
+    <div className="bg-white shadow-md p-6 top-0 w-full z-40 fixed">
+      <nav className="flex justify-around">
+        <ul className="flex space-x-6">
+          <li>
+            <a
+              href="#home"
+              className="text-gray-700 font-bold text-lg hover:text-blue-900"
+            >
+              Home
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
   );
 };
@@ -52,11 +25,10 @@ const App = () => {
   return (
     <Router>
       <div>
-        <Sidebar />
+        <Header />
       </div>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
   );
