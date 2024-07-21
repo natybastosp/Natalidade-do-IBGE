@@ -1,6 +1,5 @@
 import React from "react";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
-import { geoCentroid } from "d3-geo";
 import brazilTopoJson from "./brazilStatesTopoJson.json";
 
 const BrazilMap = () => {
@@ -9,12 +8,10 @@ const BrazilMap = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center w-full h-screen">
       <ComposableMap
         projection="geoMercator"
-        width={1000}
-        height={800}
-        className="border border-gray-300 shadow-lg"
+        className="w-full h-full border border-gray-300 shadow-lg"
       >
         <Geographies geography={brazilTopoJson}>
           {({ geographies }) =>
