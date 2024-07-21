@@ -3,6 +3,15 @@ import ReactECharts from "echarts-for-react";
 
 const ColumnChart = ({ taxaBrasil, taxaState, taxaBoy, taxaGirl }) => {
   const colOption = {
+    title: {
+      text: "Comparação de Taxas",
+      left: "center",
+      top: "top",
+      textStyle: {
+        fontSize: 18,
+        fontWeight: "bold",
+      },
+    },
     tooltip: {
       trigger: "axis",
       axisPointer: {
