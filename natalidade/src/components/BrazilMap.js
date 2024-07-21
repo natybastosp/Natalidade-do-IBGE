@@ -2,13 +2,14 @@ import React from "react";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import brazilTopoJson from "./brazilStatesTopoJson.json";
 
-const BrazilMap = () => {
+const BrazilMap = ({ onStateClick }) => {
   const handleStateClick = (geo) => {
-    alert(`Você clicou no estado: ${geo.properties.name}`);
+    const stateName = geo.properties.name;
+    onStateClick(stateName);
   };
 
   return (
-    <div className="flex justify-center items-center w-full h-screen">
+    <div className="flex flex-col justify-center items-center w-full h-screen">
       <ComposableMap
         projection="geoMercator"
         className="w-full h-full border border-gray-300 shadow-lg"
