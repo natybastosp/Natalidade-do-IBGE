@@ -112,19 +112,6 @@ const Home = () => {
                     </option>
                   ))}
                 </select>
-
-                <select
-                  className="p-2 rounded-full bg-[#1b4677] text-white"
-                  onChange={handleSelectChange}
-                  value={estadoSelecionado || ""}
-                >
-                  <option value="">UF</option>
-                  {states.map((state) => (
-                    <option key={state.id} value={state.label}>
-                      {state.name}
-                    </option>
-                  ))}
-                </select>
               </span>
             </div>
           </div>
